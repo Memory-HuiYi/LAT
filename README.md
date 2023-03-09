@@ -11,5 +11,6 @@
 
 
 ## 課程筆記區
+* [Notion](https://enormous-allspice-0c1.notion.site/5e3bcfd5be8b4598b6fa019deeccdb77)
 ## 作業連結區
 ## 專題連結區
