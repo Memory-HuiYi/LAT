@@ -14,4 +14,6 @@
 * [Notion](https://enormous-allspice-0c1.notion.site/5e3bcfd5be8b4598b6fa019deeccdb77)
 ## 作業連結區
 * [HW01](https://github.com/Memory-HuiYi/LAT/blob/main/HW/HW01.ipynb)
+* [HW02](https://github.com/Memory-HuiYi/LAT/blob/main/HW/HW02.ipynb)
+
 ## 專題連結區
