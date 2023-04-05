@@ -1,0 +1,185 @@
+﻿
+Evaluation Only. Created with Aspose.Words. Copyright 2003-2023 Aspose Pty Ltd.
+
+Teachable Machine: Approachable Web-Based Tool for Exploring Machine Learning Classification 
+
+Created with an evaluation copy of Aspose.Words. To discover the full versions of our APIs please visit: https://products.aspose.com/words/
+
+Michelle  Carney 1 
+Barron  Webster 1 
+Irene  Alvarado 1 
+Kyle Phillips 1 
+Noura  Howell 2 
+Jordan  Griffith 1 
+Jonas  Jongejan 1 
+Amit  Pitaru 1 
+Alexander  Chen 1 
+1Google, Inc. 
+Mountain  View, US (michellecarney,  warron,  irenea, kylephillips, jordangriffith, jongejan,  pitaru, chenalexander)@google.com 
+2University of California, Berkeley 
+Berkeley, US noura@berkeley.edu 
+Permission  to make  digital  or hard  copies of part  or all of this  work for personal or classroom  use is granted  without  fee provided  that  copies  are  not  made  or distributed  for profit  or commercial  advantage  and  that  copies  bear  this  notice and  the  full citation  on the  first  page.  Copyrights  for third-party  components of this  work must  be honored.  For all other  uses,  contact  the  owner/author(s). CHI ’20 Extended  Abstracts,  April 25–30,  2020,  Honolulu,  HI, USA. 
+c  2020  Copyright  is held by the  author/owner(s). 
+ACM ISBN 978-1-4503-6819-3/20/04 
+http://dx.doi.org/10.1145/3334480.3382839 
+Abstract 
+Teachable  Machine (teachablemachine.withgoogle.com)  is a web-based GUI tool for creating custom machine learning classification models without specialized technical expertise.  (Machine learning, or ML, lets systems learn to analyze data  without being explicitly programmed.)  We created  it to help students,  teachers,  designers, and others learn about  ML by creating and using their own classification models.  Its broad uptake  suggests it has empowered people to learn, teach,  and explore ML concepts:  People have created  curriculum, tutorials,  and other resources using Teachable  Machine on topics like AI ethics at institutions  including the Stanford  d.school, NYU’s Interactive Telecommunications  Program,  the MIT Media Lab, as well as creative experiments.  Users in 201 countries have created  over 125,000 classification models. Here we outline the project and its key contributions  of (1) a flexible, approachable  interface for ML classification models without ML or coding expertise, (2) a set of technical and design decisions that  can inform future interactive machine learning tools, and (3) an example of how structured  learning content  surrounding the tool supports  people accessing ML concepts. 
+Author  Keywords 
+Interactive ML; human-centered  ML 
+
+Created with an evaluation copy of Aspose.Words. To discover the full versions of our APIs please visit: https://products.aspose.com/words/
+
+
+Figure  1:  Teachable  Machine Interface  teachablema- chine.withgoogle.com/train 
+ACM  Classification  Keywords 
+H.5.m [Information interfaces and presentation  (e.g., HCI)]: Miscellaneous. 
+Introduction  and  Motivation 
+Machine learning (ML) is increasingly prevalent in daily life, powering recommendation  systems, translation, speech transcription  and more.  Yet, many people whose lives are affected by ML lack detailed understanding  of how it works and have no access to creating their own models, one aspect  of deepening digital inequality.  With numerous instances of algorithmic bias and the widespread potential  for the social impact of ML to spread to new arenas of everyday life, it is essential to enable people with diverse expertise and experiences to engage with ML. One approach  to broadening engagement  with ML is with tools that  enable users without technical knowledge to create  their own ML models. 
+Teachable  Machine is a web-based interface that  allows people to train their own ML classification models, without coding, using their webcam, images, or sound.  It uses transfer learning, an ML technique,  to find patterns and trends within the images or sound samples, and create a simple and easy classification model within seconds. With transfer learning, a user is able to add their own data  and retrain a model on top of a previously trained base model that  has learned a specific domain from a large dataset . For example, the base model(mobilenet)  for the images portion of Teachable  Machine was originally trained to recognize 1000 classes (like dog, phone, bed, trombone,  etc).  The underlying traits  that  mobilenet used to recognize those classes can be used to identify new classes the user defines.  This complexity is hidden from users, who simply benefit by needing less data  and training time to create  useful, accurate  models. 
+We designed Teachable  Machine to be used by educators to easily teach  concepts of ML; for prototypers,  designers & researchers to quickly test  interactive concepts with ML; and for users with disabilities to create  personal models they can control.  Since launch, people have trained over 125,000 ML classification models with it. 
+The primary contributions  this project makes: 
+• A generalized, flexible-input interface for making ML classification models that  can be easily learned and used without prior experience or expertise in ML or coding. 
+• A set of product  decisions that  enable learning and experimentation  for new users of ML. 
+• An example of how content  surrounding the interface allows people to learn ML concepts. 
+Related  Work 
+Human-centered  machine learning (HCML) enrolls ML to better  serve users’ goals and accommodate  particular contexts  [29, 17, 15]. Emerging perspectives in HCML call for enabling people without technical knowledge to develop their own machine learning models [29]. 
+Interactive machine learning (IML) [13] responds to this call, enrolling user input to develop and refine ML models, leveraging users’ domain and contextual  expertise [9]. For example, Fiebrink’s Wekinator helps composers and performers use ML for creative practice [14]. Diaz et al. enroll IML for game developers [12]. Katan  et al.  use IML to engage people with disabilities in musical interface development [20]. These tools combine machine learning with human domain and contextual  expertise. 
+Many IML tools target  novice users without specific technical or domain expertise.  For example, Crayon is an 
+
+Created with an evaluation copy of Aspose.Words. To discover the full versions of our APIs please visit: https://products.aspose.com/words/
+
+
+Figure  2:  Example user flow for training  a banana  ripeness image classifier.  (a)  Starting  interface. (b)  User is able to add classes or rename  them.  (c)  User imports example images to each class. (d)  Train  classifier, can monitor the  performance  of the  model over time.  (e)  User tests  new inputs,  model predicts  with a percent  which class.  User is also able to export  model for future. 
+IML system for image classification [13]. Scratch  Nodes ML enables children to create  gesture classification models that  integrate  with Scratch  [8]. Webcam Pacman invites players to train their own classifier of webcam images as an Pacman-playing  interface [1]. Machine Learning for Kids is an educational  tool for guiding children through  ML training [22]. A CAPpella is a tool for context-aware  programming by demonstration  [11]. Fran¸coise  and Bevilacqua developed a tool for novice users to generate  interactive sounds from gestures [16]. 
+Teachable  Machine builds on and extends related work. It provides an approachable  yet well-featured interface for children and adults to create  their own ML classification models through  its website.  It enables users to train classifiers for an arbitrary number of classes, provides data collection +  classification, model training, and model evaluation in the same interface, and trains on-device (which results in faster performance and enables training to be free.).  In the following sections, we outline the design of Teachable  Machine, provide preliminary descriptions of its widespread adoption  and use in-the-wild, reflect on what that  adoption  implies, and consider next steps. 
+Creating  a model 
+Common steps of making an ML classification model–data collection and classification, training, and evaluation–are laid out left-to-right  to indicate the causal relationship and order of steps for new users (Fig.  1).  To create  a model, the user first selects whether the model should classify images, sounds, or poses as input.  Then the user creates the classes they want the model to learn to classify; in Fig. 1, 2, these are ‘too early’, ‘ripe’, and ‘too late’.  For some data  types, such as audio, users are shown they need to provide a minimum number of examples.  They 
+train the model by clicking clicking “train”  in the middle “train”  panel.  Then they evaluate the quality of their model in the rightmost  “evaluation”  panel.  They can test the model with live data,  such as webcam or microphone, or recorded data,  such as still images.  They can then optionally export their model for use elsewhere, such as p5.js, the Coral Dev Board, or their own applications. 
+Going  Under  the  Hood 
+Here we outline a set of technical decisions in the tool that  enable learning and experimentation. 
+Data  privacy: helping users feel safe experimenting Teachable  Machine trains users’ models within the browser on their device, with their own data,  without that data  leaving their computer.  Furthermore,  it is possible to download that  trained model locally, using TensorFlow.js. This allows for a greater  sense of privacy and ownership than  systems that  send and process data  to a remote machine, and a more flexible and less permanent  structure to play and experiment with machine learning, without needing to worry about  storing and saving large files, datasets,  or models to the cloud. 
+Model customization:  tweaking training parameters 
+For users that  want more control over model training, Teachable  Machine provides two expandable panels:  an “advanced”  training section for hyperparameter  tweaking and an “under the hood” panel for model evaluation visualizations. The “advanced”  panel sits in the training module and can expand to reveal options for tuning the parameters  of: epochs, batch  size, and learning rate. 
+The default parameters  shown in Figure 3-a are for training image classification models.  All new image classification projects default to these parameters  - although  most users will never need to tweak them for 
+
+Figure  3:  Example advanced options  on Teachable  Machine. (a)  Training  parameters  can be adjusted.  (b)  Vocabulary to support  all users learning (c) Advanced Panel  to measure model performance. 
+satisfactory  results.  We discovered these parameters through  trial and error - making informed guesses based on user research about  the average number of samples, average number of classes, and task complexity exhibited by Teachable  Machine users. 
+Model evaluation:  helping users evaluate their models After a user has trained a model, a secondary panel is made available to help them evaluate it.  Is it accurate? Can it be improved? How quickly has the model learned? 
+Teachable  Machine withholds 15 percent  of samples (taken  proportionally from each class) to use as a validation dataset,  so the accuracy and loss visualizations (Figure 3-c) plot both the training and validation dataset results.  While the tool does not explain how to interpret the charts,  we provide a set of vocabulary words described in simple language for beginner users (Figure 3-b). Advanced users can deduce whether a model might have underfit,  overfit, or learned appropriately. 
+Usage  Across  Different  Domains 
+We’ve seen individuals publish their use of Teachable Machine in ways that  imply the tool enables learning and exploration.  These uses are likely not inclusive of every use, because we do not require users to register with us or provide documentation  of their usage, but they do provide compelling evidence that  the web tool can be easily learned, used, and taught,  even by those without prior experience in ML or coding. 
+Educators  have  used  it  to  introduce  concepts  of AI: 
+• Actua, a Canadian STEM education  nonprofit,  cites it as one of the “tools we find particularly useful for introducing these key concepts [of AI]” [3] 
+• Blakeley H. Payne has used it in her MIT AI Ethics Education Curriculum [28], to explore supervised learning and explain concepts of bias: 
+“Students  are introduced to the concept of classification.  By exploring Google’s Teachable Machine tool, students  learn about  supervised machine learning.  Then students  are asked to build a cat-dog  classifier but are unknowingly given a biased dataset.  When the classifier works better  on cats than  dogs, students  have the opportunity  to retrain their classifiers with their own new datasets.” 
+These show how Teachable  Machine has been useful for educators  who want to introduce ML concepts to students,  while not watering down concepts like bias and fairness, and even letting students  explore how bias comes about  in machine learning systems themselves. 
+Moreover, based on use of the tool amongst  teachers  & curricula, we posit that  TM facilitates active learning of AI concepts by requiring students  to interact  with those concepts by making models themselves.  The authors heard anecdotally from administrators,  educators,  and students  that  there is a dearth  of tools and activities to support  active learning in AI. 
+Integrating  machine  learning  in higher  education: 
+• Yining Shi (NYU ITP Professor) used it to teach her Machine Learning for the Web students  the basics of ML classification, and her students  used it to make their own projects.  [30] 
+• Michelle Carney (Stanford  d.school, author  of paper)  used Teachable  Machine in an assignment to allow grad students  from diverse disciplines to explore applying ML to their own domain, such as 
+
+Created with an evaluation copy of Aspose.Words. To discover the full versions of our APIs please visit: https://products.aspose.com/words/
+
+botany for plant classification or law text classification.  [10] 
+• Christine Meinders (Cal Arts, California College of Arts) used Teachable  Machine in conjunction with p5.js and Coral dev boards for undergraduate student  final projects, exploring training students own facial expressions or movements.  [23, 24] 
+These usages and the resulting projects from students suggest that  the tool can be useful not just as a way to learn the concepts of ML, but also as a resource for students’  creative projects, even if those students  have no prior ML experience. 
+Usage  within  accessibility :
+• Research team  at Google is using Teachable Machine to create  bespoke applications for users with ALS. One user was able to trigger audio playback with a sequence of facial expressions using a model trained with Teachable  Machine.  [18] 
+Users  authoring  tutorials  for Teachable  Machine: 
+Users have authored  their own tutorials  in multiple languages that  we did not support  with the launch of the tool - see tutorials  in Japanese  [21], Korean [19], Turkish [26], Tamil [7], Hindi [5], Khmer [4], Vietnamese [2]. 
+This suggests to us that  the tool is easy enough to learn that  practitioners  feel comfortable enough with it to explain it to others,  even in languages other than  English, the language we released the tool in. 
+Users  have  also  been  using  the  tool  to  prototyp e ideas  that  require  machine  learning  classification: 
+• Babusi Nyoni using Teachable  Machine to create blackgirlhair.js [25] 
+• Base Design used it to prototype  a cookie-drawing recognizer. [31] 
+• Atharva Patil used it to build a posture detector that  blurs the web page if you slouch.  [27] 
+These usages suggest to us that  users find Teachable Machine an easier tool to prototype  with than  existing workflows, and also that  it enables people with less expertise to prototype  using ML classification. 
+Enabling  personal  empowerment  and  agency:  Users have communicated  that  they feel more empowered to work with ML as a result of Teachable  Machine. 
+• They have commented  on Twitter  and YouTube, such as mb09 on Dan Schiffman’s YouTube video about  Teachable  Machine said: “Thanks  for the new video! Always appreciate  the interesting and inspiring content  from here.  It certainly helps to eliminate the fear barrier to try new things!” [6] 
+• Christine Meinders, Professor of AI, Culture and Creativity at Cal Arts and California College of Arts, founder of Feminist.AI [23, 24]: “I use teachable machine in my classes and community workshops via Feminist.AI. It’s a great  way for students  to actually visualize what it means to have diverse data collection, and quickly understand  issues with training.  The ability to record while moving allows for unique data  collection, adding or removing data, and retraining models.  It’s great  because you can instantly understand  changes.  Additionally, it has the ability to name your class, giving it a sense of personalization.  This allows anyone from any 
+
+Created with an evaluation copy of Aspose.Words. To discover the full versions of our APIs please visit: https://products.aspose.com/words/
+
+background to come in and play with Machine Learning for themselves.  This is huge.” 
+Discussion 
+Teachable  Machine is empowering people to create  their own machine learning classification models, including: 
+• Educators  using it in the classroom and creating their own curriculum and content. 
+• Enabling interactive ML to be culturally sensitive (e.g.  starting  a conversation about  subjective classification, like banana  ripeness, which can differ between people) 
+• A clearer mental model about  what ML is doing, like understanding  the relationship between inputs and outputs  of the model 
+• Working immediately out of the box, while allowing users to dive in deeper to customize and explore the models themselves, export and use those models, and work with multiple inputs (cameras, microphones, images) and outputs  (arduinos,  coral dev boards) 
+This work is important  as ML/AI impact many aspects of our lives. By providing fun and engaging examples that invite people to play with these techniques,  we are allowing people to understand  how ML works without needing to learn coding.  Creating models themselves also allows people to question the inputs and outputs  of the models around them in their daily life - for example, if you train a model on bananas  and you prefer green bananas, that  might be ‘not ripe’ to other people, therefore your bias in ripeness is creeping into the system.  We believe that  this approach  – making technology teachable  – is an important  shift for ML/AI. 
+• Who  can  use  ML: Just  as Visual Basic opened up database  programming to a substantially larger audience, we can do that  for ML/AI. 
+• How  ML is used:  Now ML is a tool in users hands, not something that  happens to them.  Enable users to teach  their technology in new ways through models that  they – not a central source – create and control. 
+• Why  ML is used:  Now I can use ML to solve the problems that  matter  to me and my community. 
+This shift could have a cumulative, positive effect for society.  Using ML hands-on could be one of the most effective ways to gain an intuitive understanding  of how it works. And as ML is increasingly baked into society, understanding  how these systems work is critical – so we can all ask the right questions. 
+Future  Work 
+Our future work includes internationalization,  user studies, and expansion to include new model types & input types such as hand models & text  classification. 
+Conclusion 
+Teachable  Machine is not only an education  tool, but a way for anyone to quickly and easily create  a ML classifier using only their web browser in a matter  of minutes. Already, we have seen its adoption  in classrooms, curriculum, and with nontraditional  ML enthusiasts creating their own projects as well, and we continue to see new examples of how it has enabled others to learn about ML & create  their own models. 
+Acknowledgements 
+We thank  all of the people who have helped make Teachable  Machine possible, within Google and beyond. 
+
+Created with an evaluation copy of Aspose.Words. To discover the full versions of our APIs please visit: https://products.aspose.com/words/
+
+References 
+[1] Webcam Pacman. https://storage.googleapis.com/tfjs- examples/webcam-transfer-learning/dist/index.html. 
+[2] 110 
+- AI - Teachable Machine - iu khin con rn bng ting n´oi. https://www.youtube.com/watch?v=YKhQSVTHbHc , Nov. 2019. 
+[3] Bringing AI into the Classroom. https://www.actua.ca/en/bringing-ai-into-the- classroom/,  Dec. 2019. 
+[4] Learn AI with Teachable  Marchine | Khmer Tutorial. https://www.youtube.com/watch?v=tbbXshc8tKY , Nov. 2019. 
+[5] Machine Learning Without  Coding | Google’s Teachable  Machine. https://www.youtube.com/watch?v=YXQjMvhwNsk , Dec. 2019. 
+[6] Teachable  Machine 1: Image Classification - by The Coding Train. https://www.youtube.com/watch?v=kwcillcWOg0 , Nov. 2019. 
+[7] Teachable  machine 2 0 in tamil. https://www.youtube.com/watch?v=iUpdVJBcFK4 , Nov. 2019. 
+[8] Agassi, A., Erel, H., Wald, I. Y., and Zuckerman, O. Scratch  Nodes ML: A Playful System for Children to Create Gesture Recognition Classifiers. In Extended Abstracts  of the 2019 CHI Conference on Human Factors  in Computing Systems - CHI EA ’19, ACM Press (Glasgow, Scotland Uk, 2019), 1–6. 
+[9] Amershi, S., Cakmak, M., Knox, W. B., and Kulesza, 
+T.  Power to the People:  The Role of Humans in Interactive Machine Learning. AI Magazine 35, 4 
+(Dec. 2014), 105. 
+[10] Carney, M. Using Teachable  Machine in the d.school 
+classroom. https://medium.com/@michellecarney/using- teachable-machine-in-the-d-school-classroom- 96be1ba6a4f9, Nov. 
+2019. 
+[11] Dey, A. K., Hamid, R., Beckmann, C., Li, I., and Hsu, D.  a CAPpella: programming by demonstration of context-aware  applications.  In Proceedings of the 2004 conference on Human factors in computing systems - CHI ’04, ACM Press (Vienna, Austria, 2004), 33–40. 
+[12] Diaz, C. G., Perry, P.,  and Fiebrink, R. Interactive Machine Learning for More Expressive Game Interactions.  In 2019 IEEE Conference on Games (CoG), IEEE (London, United Kingdom, Aug. 2019), 1–2. 
+[13] Fails, J. A., and Olsen, D. R. Interactive machine learning.  In Proceedings of the 8th international conference on Intelligent user interfaces - IUI ’03, ACM Press (Miami, Florida, USA, 2003), 39. 
+[14] Fiebrink, R. Real-time Human Interaction  with Supervised Learning Algorithms for Music Composition and Performance.  PhD thesis, Princeton,  New Jersey, US, 2011. 
+[15] Fiebrink, R., and Gillies, M. Introduction  to the Special Issue on Human-Centered  Machine Learning. ACM Transactions  on Interactive Intelligent Systems 8, 2 (June  2018), 1–7. 
+[16] Fran¸coise,  J.,  and Bevilacqua, F.  Motion-Sound Mapping through  Interaction:  An Approach to User-Centered Design of Auditory Feedback Using Machine Learning. ACM Transactions  on Interactive Intelligent Systems 8, 2 (June  2018), 1–30. 
+
+Created with an evaluation copy of Aspose.Words. To discover the full versions of our APIs please visit: https://products.aspose.com/words/
+
+[17] Gillies, M., Lee, B., d’Alessandro, N., Tilmanne, J., Kulesza, T., Caramiaux, B., Fiebrink, R., Tanaka,  A., Garcia, J.,  Bevilacqua, F., Heloir, A., Nunnari, F., 
+Mackay, W., and Amershi, S.  Human-Centred 
+Machine Learning. In Proceedings of the 2016 CHI Conference Extended Abstracts  on Human Factors  in Computing Systems - CHI EA ’16, ACM Press (San 
+Jose, California, USA, 2016), 3558–3565. 
+[18] Google. Project  Euphonia:  Helping everyone be 
+better  understood. https://www.youtube.com/watch?v=OAdegPmkK-o ,
+May 2019. 
+[19] Jo, D.  (ENG CC)Making the world’s easiest Artificial Intelligence (Teachable  Machine, AI, Machine 
+Learning). https://www.youtube.com/watch?v=USQGTW34lO8feature =, Nov. 2019. 
+[20] Katan,  S., Grierson, M., and Fiebrink, R. Using 
+Interactive Machine Learning to Support  Interface Development Through  Workshops with Disabled 
+People.  In Proceedings of the 33rd Annual ACM Conference on Human Factors in Computing Systems - CHI ’15, ACM Press (Seoul, Republic of Korea, 2015), 251–254. 
+[21] Lan, M. WebTeachable  Machine - paiza. https://paiza.hatenablog.com/entry/2019/12/11 /
+[22] Lane, D.  Machine Learning for Kids. https://machinelearningforkids.co.uk .
+[23] Meinders, C. AI. Culture. Creativity. https://www.calartsai.com .
+[24] Meinders, C. Posthuman  AI. Culture. Creativity. https://www.cca-ai.com .
+[25] Nyoni, B.  blackgirlhair.js. 
+https://triple.black/blackgirlhair , Dec. 2019. 
+[26] odaba¸sı,  10 DAK˙IKADA KODSUZ DER˙IN 
+O¨ GRENME˘ ˙ILE SES TANIMA | GOOGLE TEACHABLE MACHINE. https://www.youtube.com/watch?v=JFt2a7lU4H8 ,
+Nov. 2019. 
+[27] Patil,  A. Sit Straight,  an teachable  machine 
+experiment. https://atharvapatil.github.io/teachable-browser /,
+Dec. 2019. 
+[28] Payne,  B. H. An Ethics of Artificial Intelligence Curriculum for Middle School Students. https://docs.google.com/document/d/1e9wx9oBg7CR0s 5O7YnYHVmX7H7pnITfoDxNdrSGkp60/view, 2019. 
+[29] Ramos, G., Suh, J.,  Ghorashi, S., Meek, C., Banks, 
+R., Amershi, S., Fiebrink, R., Smith-Renner,  A., and Bansal, G. Emerging Perspectives in
+Human-Centered  Machine Learning. In Extended Abstracts  of the 2019 CHI Conference on Human 
+Factors  in Computing Systems - CHI EA ’19, ACM 
+Press (Glasgow, Scotland Uk, 2019), 1–8. 
+[30] Shi, Y. yining1023/machine-learning-for-the-web. https://github.com/yining1023/machine-learning- for-the-web, Dec. 2019.  original-date: 2018-09-01T21:21:53Z. 
+[31] Verdun, L. (7) Lou Verdun on Twitter:  ”We 
+explored AI over a couple of days with @delphinevlk 
+at @Base design using mainly #TeachableMachine. 
+We came up with a couple of fun and practical experiments and here is the first one, 
+@MaisonDandoy ”draw me a cookie”. (1/4) 
+#DigitalLab  #BaseLab  #DataScience https://t.co/lZ3wqjg7dl ” /  Twitter. https://twitter.com/louverdun/status/1202215392376172544 , Dec. 2019. 
+Created with an evaluation copy of Aspose.Words. To discover the full versions of our APIs please visit: https://products.aspose.com/words/
