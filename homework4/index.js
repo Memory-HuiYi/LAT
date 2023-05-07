@@ -28,12 +28,16 @@ async function MS_TextSentimentAnalysis(thisEvent) {
   const analyticsClient = new TextAnalyticsClient(endpoint, new AzureKeyCredential(apiKey));
   let documents = [];
   documents.push(thisEvent.message.text);
+  //這裡開始有改
+  //"zh-Hant", { includeOpinionMining: true }：開啟Opinion Mining的判斷(?
   const results = await analyticsClient.analyzeSentiment(documents, "zh-Hant", { includeOpinionMining: true });
   console.log("[results] ", JSON.stringify(results));
-  console.log("[results] ", JSON.stringify(results, null, 2));
+  // console.log("[results] ", JSON.stringify(results, null, 2));
 
   let maxSentiment = null;
   let maxConfidence = 0;
+
+  //抓結果maxSentiment、信心值maxConfidence
 
   for (const result of results) {
     const sentiment = result.sentiment;
@@ -45,6 +49,8 @@ async function MS_TextSentimentAnalysis(thisEvent) {
     }
   }
 
+  //判斷結果，把結果變為中文存到myResult、信心值存到myResult
+
   let myResult = '';
   if (maxSentiment === 'positive') {
     myResult = `正向，信心值${maxConfidence}`;
@@ -53,6 +59,9 @@ async function MS_TextSentimentAnalysis(thisEvent) {
   } else if (maxSentiment === 'neutral') {
     myResult = `中性，信心值${maxConfidence}`;
   }
+
+  //如果有抓到主詞(?)，myResult+上主詞
+
   if (results[0].sentences[0].opinions && results[0].sentences[0].opinions.length > 0) {
     const opinion = results[0].sentences[0].opinions[0];
     if (opinion.target) {
@@ -67,9 +76,9 @@ async function MS_TextSentimentAnalysis(thisEvent) {
 
     type: 'text',
     // text: event.message.text
-    text: myResult
+    text: myResult  //改的最後一行，輸出myResult
   };
-
+  
   return client.replyMessage(thisEvent.replyToken, echo);
 }
 
