@@ -13,7 +13,7 @@ const configLine = {
     channelSecret: configGet.get("CHANNEL_SECRET")
 };
 
-//Azure
+//Azure Form Recognizer config
 const endpoint = configGet.get("ENDPOINT");
 const apiKey = configGet.get("FORM_RECOGINIZER_API_KEY");
 

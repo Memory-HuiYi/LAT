@@ -45,7 +45,6 @@ async function writeToFile(content, filePath) {
     });
 }
 
-
 // 呼叫 Azure Form Recognizer
 //可以識別圖片檔、PDF檔
 async function performFormRecognition(filePath) {
@@ -86,7 +85,6 @@ async function performFormRecognition(filePath) {
     }
 }
 
-
 // 處理接收到的 LINE 訊息
 async function handleEvent(event) {
     if (event.message.type === 'image') {
@@ -109,10 +107,6 @@ async function handleEvent(event) {
         performFormRecognition(filePath);
     }
 }
-
-
-
-
 
 app.listen(port, () => {
     console.log(`App is listening on port ${port}`);
