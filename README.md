@@ -16,5 +16,6 @@
 * [HW01](https://github.com/Memory-HuiYi/LAT/blob/main/HW/HW01.ipynb)
 * [HW02](https://github.com/Memory-HuiYi/LAT/blob/main/HW/HW02.ipynb)
 * [HW03](https://github.com/Memory-HuiYi/LAT/blob/main/HW/HW03/TextMining.ipynb)
+* [HW04](https://github.com/Memory-HuiYi/LAT/tree/main/homework4)
 
 ## 專題連結區
