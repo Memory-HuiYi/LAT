@@ -44,20 +44,29 @@ function processImage() {
 
             //修改開始
 
-            //抓categories中的name設為categoryName
-            var categoryName = data.categories[0].name;
 
-            //判斷categoryName中是否有animal
-            if (categoryName.includes("animal")) {
-                //若有animal，取得animal_後面的字設為animalName
-                var animalName = categoryName.split("_")[1];
-                console.log(animalName);
-                //在showAnimalResult中顯示animalName(顯示動物名稱)
-                $("#showAnimalResult").text(animalName);
+            var categoryName = "";
+            //判斷categories是否為空
+            if (data.categories && data.categories.length > 0) {
+                //抓categories中的name設為categoryName
+                categoryName = data.categories[0].name;
+                console.log(categoryName)
+                //判斷categoryName中是否有animal
+                if (categoryName.includes("animal")) {
+                    //若有animal，取得animal_後面的字設為animalName
+                    var animalName = categoryName.split("_")[1];
+                    console.log(animalName);
+                    //在showAnimalResult中顯示animalName(顯示動物名稱)
+                    $("#showAnimalResult").text(animalName);
+                } else {
+                    console.log("圖中沒有動物");
+                    //若沒有animal，顯示圖中沒有動物
+                    $("#showAnimalResult").text("圖中沒有動物");
+                }
             } else {
-                console.log("圖中沒有動物");
-                //若沒有animal，顯示圖中沒有動物
-                $("#showAnimalResult").text("圖中沒有動物");
+                //categories為空，顯示無法識別
+                console.log("無法識別");
+                $("#showAnimalResult").text("無法識別");
             }
 
             $("#picDescription").empty();
