@@ -1,4 +1,4 @@
-//儲存時一並識別
+//儲存時一並識別並輸出成檔案
 'use strict';
 
 const line = require('@line/bot-sdk'),
@@ -55,7 +55,13 @@ async function performFormRecognition(filePath) {
 
     const poller = await recognizerClient.beginAnalyzeDocument("prebuilt-document", fs.readFileSync(filePath));
     const { content, pages } = await poller.pollUntilDone();
+
+    //toTxt
     let lineResult = "";
+    //toJSON
+    let output = {
+        pages: []
+    };
 
     if (pages.length <= 0) {
         console.log("No pages were extracted from the document.");
@@ -68,21 +74,38 @@ async function performFormRecognition(filePath) {
 
             if (page.lines.length > 0) {
                 console.log("  Lines:");
-
+                let lines = [];
                 for (const line of page.lines) {
                     let lineContent = "";
                     for (const word of line.words()) {
                         lineContent += word.content;
                     }
                     console.log(`  - "${lineContent}"`);
+                    //toTxt
                     lineResult += lineContent;
+                    //toJSON
+                    lines.push(lineContent);
                 }
+                //toJSON
+                output.pages.push({
+                    pageNumber: page.pageNumber,
+                    unit: page.unit,
+                    width: page.width,
+                    height: page.height,
+                    angle: page.angle,
+                    lines: lines
+                });
 
-                const outputFilePath = `output.txt`;
-                await writeToFile(lineResult, outputFilePath);
-                console.log("File has been written successfully.");
+
             }
         }
+        //toTxt
+        const outputFilePath = `output.txt`;
+        await writeToFile(lineResult, outputFilePath);
+        //toJSON
+        const outputFilePathJSON = `output.json`;
+        await writeToFile(JSON.stringify(output), outputFilePathJSON);
+        console.log("File has been written successfully.");
     }
 }
 
