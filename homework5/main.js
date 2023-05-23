@@ -119,6 +119,8 @@ function processImageFile(imageObject) {
             //顯示JSON內容
             $("#responseTextArea").val(JSON.stringify(data, null, 2));
 
+            //修改開始
+
             var categoryName = "";
             //判斷categories是否為空
             if (data.categories && data.categories.length > 0) {
