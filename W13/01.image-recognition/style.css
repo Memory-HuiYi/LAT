@@ -1,0 +1,24 @@
+#picDescription {
+   text-align: center;
+   font-weight: bold;
+}
+
+#showResult {
+   background-color: yellow;
+   height: 150px;
+   padding: 10px;
+   border-radius: 10px;
+   border: dashed;
+   border-color: red;
+}
+
+#showResult a {
+   font-size: 20px;
+   font-weight: bolder;
+}
+
+#showResult p {
+   font-size: 40px;
+   font-weight: bolder;
+   text-align:center;
+}

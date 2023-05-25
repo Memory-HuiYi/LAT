@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>動物查詢</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="../key.js"></script>
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <div id="wrapper" style="width:1020px; display:table;">
+        <h1>動物查詢</h1>
+        輸入一個圖片網址，然後按下 <strong>分析圖片</strong> 按鈕.
+        <br><br>
+
+
+        Image to analyze:
+        <input type="text" name="inputImage" id="inputImage"
+            value="https://www.petmd.com/sites/default/files/petmd-cat-happy-10.jpg" />
+        <button id="thisButton">分析圖片</button>
+        <br><br>
+        <!--type="file" 可以直接上傳檔案 
+        accept="image/*" 只能傳任何圖片類的 -->
+        <input type="file" name="inputImageFile" id="inputImageFile" data-target="file-uploader" accept="image/*" />
+        <br><br>
+        <div id="imageDiv" style="width:420px; display:table-cell;">
+            <div id="showResult">
+                <!-- <br> -->
+                <a>查詢結果在此：</a>
+                <p id = "showAnimalResult"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="wrapper" style="width:1020px; display:table;">
+        <div id="jsonOutput" style="width:600px; display:table-cell;">
+            Response:
+            <br><br>
+            <textarea id="responseTextArea" class="UIInput" style="width:580px; height:400px;"></textarea>
+        </div>
+        <div id="imageDiv" style="width:420px; display:table-cell;">
+            Source image:
+            <br><br>
+            <img id="sourceImage" width="400" />
+            <p id="picDescription"></p>
+        </div>
+    </div>
+</body>
+
+</html>
