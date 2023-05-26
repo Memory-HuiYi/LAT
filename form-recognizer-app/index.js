@@ -1,4 +1,4 @@
-//儲存時一並識別並輸出成檔案
+//儲存時一並識別並輸出成JSON
 'use strict';
 
 const line = require('@line/bot-sdk'),
@@ -93,15 +93,15 @@ async function performFormRecognition(filePath) {
                     width: page.width,
                     height: page.height,
                     angle: page.angle,
-                    lines: lines
+                    // lines: lines
+                    lines: lineResult
                 });
-
 
             }
         }
-        //toTxt
-        const outputFilePath = `output.txt`;
-        await writeToFile(lineResult, outputFilePath);
+        // //toTxt
+        // const outputFilePath = `output.txt`;
+        // await writeToFile(lineResult, outputFilePath);
         //toJSON
         const outputFilePathJSON = `output.json`;
         await writeToFile(JSON.stringify(output), outputFilePathJSON);
