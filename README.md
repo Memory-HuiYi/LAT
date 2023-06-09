@@ -21,5 +21,5 @@
 
 
 ## 專題連結區
-
+* [介紹影片](https://www.youtube.com/watch?v=FD5CpPrky3o)
 * [專題連結](https://github.com/din2009siuc/LAT_final)
